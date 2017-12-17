@@ -1,13 +1,15 @@
 package android.shineweather.com.shineweather.db;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by LSG on 2017/12/16.
  */
 
-public class County {
+public class County extends DataSupport {
     private int id;
     private String countyName;
-    private String weatherID;
+    private String weatherId;
     private int cityId;
 
     public int getId() {
@@ -26,12 +28,12 @@ public class County {
         this.countyName = countyName;
     }
 
-    public String getWeatherID() {
-        return weatherID;
+    public String getWeatherId() {
+        return weatherId;
     }
 
-    public void setWeatherID(String weatherID) {
-        this.weatherID = weatherID;
+    public void setWeatherId(String weatherId) {
+        this.weatherId = weatherId;
     }
 
     public int getCityId() {
