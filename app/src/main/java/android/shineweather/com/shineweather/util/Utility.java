@@ -3,7 +3,10 @@ package android.shineweather.com.shineweather.util;
 import android.shineweather.com.shineweather.db.City;
 import android.shineweather.com.shineweather.db.County;
 import android.shineweather.com.shineweather.db.Province;
+import android.shineweather.com.shineweather.gson.Weather;
 import android.text.TextUtils;
+
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,6 +83,17 @@ public static boolean handleCityResponse(String response,int provinceId) {
           }
         }
         return false;
+    }
+    public static Weather handleWeatherResponse(String respone){
+        try {
+            JSONObject jsonObject = new JSONObject(respone);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
